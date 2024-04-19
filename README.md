@@ -20,7 +20,7 @@ O projeto consiste em simular um sistema bancário com as seguintes entidades:
 O sistema possui a seguinte lógica de funcionamento:
 
 - Cada cliente possui uma conta com um saldo inicial de R$ 1.000,00.
-- Os clientes realizam compras cada um em um loja especifica.
+- Os clientes realizam compras cada alternado as lojas e por logica os valores.
 - Cada loja possui uma conta para receber e por logica e a mesma conta que sera usada para pagar os funcionarios.
 - As lojas pagam os funcionários assim que possuem o valor dos salários (R$ 2.800,00) que e o valor dos salarios de todos os funcionarios daquela loja , como se trata de uma simulaçao e por padrao todos os funcionarios recebem no mesmo dia e por volta do mesmo valor foi adotado essa logica.
 - Cada funcionário possui duas contas: uma para receber o salário da loja e outra para investimentos. O funcionário investe 20% do seu salário na conta de investimentos logo após recebê-lo.
@@ -38,7 +38,7 @@ Como executar:
 
 Observaçoes;
 
-1. Ao inicializar o sistema iremos ter uma simulação da seguinte forma . Algumas pessoas vao e uma loja A e compram seus produtos ate nao possuirem mais dinheiro em suas contas , outro grupo vai a loja B e da mesma forma compra ate que nao se tenha mais dinheiro em suas contas.
+1. Ao inicializar o sistema iremos ter uma simulação da seguinte forma . Algumas pessoas vao e uma loja A e compram seus produtos e depois vao pra loja B e ficam assim trocando de lojas ate nao possuirem mais dinheiro em suas contas , outro grupo faz a mesma coisa so que começando pela loja B
 2. Em seguida as lojas iram pagar os funcionarios sempre que a mesma alcançar o valor do salario de todos os funcionarios que trabalham na loja tendo como base que sao duas lojas cada uma com 2 funcionarios
 3. A medida que os funcionarios recebem o salario 20% do mesmo e depositado em uma conta especial de investimento
 4. O pagamento dos funcionarios e feito alguns instante apos o inicio da compra pelos cliente , de certa forma criar um ambiente em que so se pode pagar funcionarios apos um tempo da compra realiza pelos clientes
