@@ -20,11 +20,15 @@ public class Cliente extends Thread {
     @Override
     public void run() {
         lock.lock();
+        boolean valorAcimaDoNecessario = conta.getSaldo() > lojas.get(currentLojaIndex).getValor();
         try {
-            while (conta.getSaldo() > 0 && conta.getSaldo() > lojas.get(currentLojaIndex).getValor()) {
-                compras();
-                changeLoja();
-            }
+        	if(valorAcimaDoNecessario) {
+        		changeLoja();
+	            while (conta.getSaldo() > 0 && valorAcimaDoNecessario) {
+	                compras();
+	                changeLoja();
+	            }
+        	}
         } finally {
             lock.unlock();
         }
