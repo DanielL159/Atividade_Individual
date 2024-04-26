@@ -11,6 +11,7 @@ public class Loja {
 	private Conta conta;
 	List<Funcionario> funcionarios = new ArrayList<Funcionario>();
 	Lock lock = new ReentrantLock();
+	private Integer funcionarioContador = 0;
 
 	public Loja(String nomeLoja,Double valorDouble, Conta conta) {
 		this.nomeLoja=nomeLoja;
@@ -44,17 +45,19 @@ public class Loja {
 	}
 	public void pagarFuncinario() {
 		
-		if (conta.getSaldo() > 2800.0) {
-			System.out.println(getNomeLoja()+" "+(conta.getSaldo() > 2800.0));
+		while(conta.getSaldo() > 1400) {
+			System.out.println(getNomeLoja()+" "+(conta.getSaldo() >1400.));
 			lock.lock();
 			try {
 			
-				for (Funcionario funcionario: funcionarios) {
-					System.out.println(getNomeLoja()+" atualmente tem atualmete: " + conta.getSaldo());
-					System.out.println(funcionario.getNomeFuncionario() +" tem atualmente: " + funcionario.getContaReceber().getSaldo());
-					conta.getBanco().transacao(conta,1400.0, funcionario.getContaReceber());
-					System.out.println( funcionario.getNomeFuncionario() +" recebeu 1.400 de "+ nomeLoja +" e tem atualmente: " + funcionario.getContaReceber().getSaldo());
-					System.out.println(getNomeLoja()+" atualmente tem atualmete: " + conta.getSaldo());
+				System.out.println(getNomeLoja()+" atualmente tem atualmete: " + conta.getSaldo());
+				System.out.println( funcionarios.get(funcionarioContador).getNomeFuncionario() +" tem atualmente: " + funcionarios.get(funcionarioContador).getContaReceber().getSaldo());
+				conta.getBanco().transacao(conta,1400.0, funcionarios.get(funcionarioContador).getContaReceber());
+				System.out.println( funcionarios.get(funcionarioContador).getNomeFuncionario() +" recebeu 1.400 de "+ nomeLoja +" e tem atualmente: " + funcionarios.get(funcionarioContador).getContaReceber().getSaldo());
+				System.out.println(getNomeLoja()+" atualmente tem atualmete: " + conta.getSaldo());
+				funcionarioContador++;
+				if (funcionarioContador > 1) {
+					funcionarioContador = 0;
 				}
 				
 			} catch (Exception e) {

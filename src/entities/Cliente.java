@@ -21,7 +21,7 @@ public class Cliente extends Thread {
     public void run() {
         lock.lock();
         try {
-            while (conta.getSaldo() > 0) {
+            while (conta.getSaldo() > 0 && conta.getSaldo() > lojas.get(currentLojaIndex).getValor()) {
                 compras();
                 changeLoja();
             }

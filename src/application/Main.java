@@ -27,7 +27,7 @@ public class Main {
 			}
 		}
 
-		for (int i = 0; i < 6; i++) {
+		for (int i = 0; i < 5; i++) {
 			Cliente cliente = new Cliente("Cliente " + (i + 1), new Conta(1000.0, bradesco), lojas);
 			cliente.start();
 		}
